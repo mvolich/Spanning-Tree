@@ -154,8 +154,8 @@ def create_correlation_heatmap(df):
     # This provides better visual differentiation for highly correlated data
     fig = go.Figure(data=go.Heatmap(
         z=corr_matrix.values,
-        x=corr_matrix.columns,
-        y=corr_matrix.index,
+        x=corr_matrix.columns.tolist(),
+        y=corr_matrix.index.tolist(),
         colorscale=[
             [0.0, '#d73027'],    # Red for low correlations (0.6)
             [0.25, '#fee090'],   # Yellow-orange
@@ -167,13 +167,7 @@ def create_correlation_heatmap(df):
         zmax=1.0,
         text=corr_matrix.values,
         texttemplate='%{text:.2f}',
-        textfont={"size": 11},
-        colorbar=dict(
-            title="Correlation",
-            titleside="right",
-            tickvals=[0.6, 0.7, 0.8, 0.9, 1.0],
-            ticktext=['0.6', '0.7', '0.8', '0.9', '1.0']
-        )
+        textfont=dict(size=11)
     ))
     
     fig.update_layout(
