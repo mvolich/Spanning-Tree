@@ -171,9 +171,8 @@ def create_correlation_heatmap(df):
         colorbar=dict(
             title="Correlation",
             titleside="right",
-            tickmode="linear",
-            tick0=0.6,
-            dtick=0.1
+            tickvals=[0.6, 0.7, 0.8, 0.9, 1.0],
+            ticktext=['0.6', '0.7', '0.8', '0.9', '1.0']
         )
     ))
     
